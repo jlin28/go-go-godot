@@ -23,3 +23,5 @@
       * Only renderer to be capable of running on hardware without RenderingDevice support
     * Good for 2D and games that don't require highly complex 3D rendering
     * Low base cost, high scaling :(
+
+For this sample (as well as the final project), we will be utilizing __Compatibility__.

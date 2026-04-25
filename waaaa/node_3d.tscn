@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://61knh6tklxhd"]
 
-[ext_resource type="PackedScene" uid="uid://dibfv1herxrjk" path="res://animatable_body_3d.tscn" id="1_a202f"]
+[ext_resource type="PackedScene" uid="uid://cyxa1hxxqetgx" path="res://character_body_3d.tscn" id="1_a202f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xowi"]
 
@@ -22,8 +22,8 @@ mesh = SubResource("BoxMesh_a202f")
 transform = Transform3D(-0.5960988, 0.55039614, -0.5845771, 0, 0.7280719, 0.68550074, 0.8029111, 0.40862614, -0.43400282, 0, 5.4551744, -2.408526)
 light_energy = 2.426
 
-[node name="AnimatableBody3D" parent="." unique_id=743315693 instance=ExtResource("1_a202f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57300186, 0)
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2025344051]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7683716e-07, 1.3181245, 5.4980702)
+
+[node name="CharacterBody3D" parent="." unique_id=214059352 instance=ExtResource("1_a202f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53523993, 0)

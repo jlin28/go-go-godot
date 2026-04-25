@@ -4,13 +4,14 @@
 
 ## ***NOTES BEGIN***
 
-### ToC
+### ***Table of Contents***
 1. [AVAILABLE RENDERERS](#available-renderers)
 2. [INTRO](#intro)
 3. [HOW DO I GET STARTED](#how-do-i-get-started-)
+<br>
 
 ### AVAILABLE RENDERERS
-  
+---
   * __Forward+__
     * Most advanced!!!!!!!
     * Desktop platforms only
@@ -32,7 +33,10 @@
 
 For this sample (as well as the final project), we will be utilizing __Compatibility__.
 
+<br>
+
 ### INTRO
+---
   * Godot supports C#, C++, and its own GDScript
     * GDScript is like a blend between TypeScript and Python (syntax will generally be the same as Python's)
   * Creating a game begins with a __scene__
@@ -41,8 +45,10 @@ For this sample (as well as the final project), we will be utilizing __Compatibi
       * Nodes can have script/code attached that updates the object for every frame in the game loop
     * Scene can then be saved to disk and used within other scenes
 
-### HOW DO I GET STARTED ????????
+<br>
 
+### HOW DO I GET STARTED ????????
+---
 Remember, right clicks are your best friend.
 
   1) Start with a 3D scene (for 3d apps of course heh)

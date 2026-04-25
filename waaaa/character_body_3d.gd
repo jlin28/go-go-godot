@@ -38,6 +38,7 @@ extends CharacterBody3D
 
 @export var speed = 14
 @export var fall_acceleration = 75
+@export var jump_velocity = 20
 
 func _physics_process(delta):
 	var direction = Vector3.ZERO
@@ -49,5 +50,12 @@ func _physics_process(delta):
 		direction.x -= 1
 
 	velocity.x = direction.x * speed
+	
+	if not is_on_floor():
+		velocity.y -= fall_acceleration * delta
+	# delta = time since last physics frame, multiplying by this makes gravity independent of frame rate
+	
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = jump_velocity
 	
 	move_and_slide()

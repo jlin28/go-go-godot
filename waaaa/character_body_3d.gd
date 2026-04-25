@@ -54,6 +54,11 @@ func _physics_process(delta):
 		
 	if Input.is_action_pressed("move_back"):
 		direction.z += 1
+		
+	if direction != Vector3.ZERO: 
+		direction = direction.normalized()
+	# Normalizing a vector maintains the original direction while changing the magnitute to 1.
+	# This way diagonal movement isn't faster!
 
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed

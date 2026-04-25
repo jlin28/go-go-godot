@@ -8,6 +8,7 @@
 1. [AVAILABLE RENDERERS](#available-renderers)
 2. [INTRO](#intro)
 3. [HOW DO I GET STARTED](#how-do-i-get-started-)
+4. [HOW TO EMBED INTO FLASK](#how-to-embed-into-flask)
 <br>
 
 ### AVAILABLE RENDERERS
@@ -81,3 +82,29 @@ Remember, right clicks are your best friend.
   14) Right click within the main scene and click 'Instantiate child scene' and select your player
   15) Add a camera for the perspective
   16) Now when you click the play button in the upper right, you should see your objects behave as they were coded!!!
+
+<br>
+
+### HOW TO EMBED INTO FLASK
+---
+
+  1) In the `static` folder, create a subfolder. Let's name it `godot`! This is the location where the Godot web export will go.
+  2) In whichever template you wish to display the game (`play.html` in this case), add an iframe that points to the exported Godot file. We'll call it `index.html`.
+     ```
+     <iframe
+         src="/static/godot/index.html"
+         style="width: 100vw; height: 100vh;">
+     </iframe>
+     ```
+     An `iframe` is an HTML element that allows other interactive content to be embedded in a webpage. In this case, our Flask page is displaying the exported Godot web page inside the `/play` page.
+  3) If not done previously, install export templates:
+     - `Editor -> Manage Export Templates`
+     - If Godot says they are not installed, install the proper version.
+  5) Export the Godot project for Web:
+     - `Project -> Export`
+     - Click `Add...` and select `Web`
+     - Click `Export Project`
+  6) Set the export path to the `/static/godot/` folder and name the file `index.html` to match our iframe.
+  6) Run Flask! If everything worked, the Godot game should appear embedded in the Flask page.
+  7) **Note**: Current version is a test, export again when more finalized!
+

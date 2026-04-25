@@ -5,9 +5,9 @@
 ## ***NOTES BEGIN***
 
 ### ToC
-[AVAILABLE RENDERERS](#available-renderers)
-[INTRO](#intro)
-[HOW DO I GET STARTED](#how-do-i-get-started-????????)
+1. [AVAILABLE RENDERERS](#available-renderers)
+2. [INTRO](#intro)
+3. [HOW DO I GET STARTED](#how-do-i-get-started-)
 
 ### AVAILABLE RENDERERS
   

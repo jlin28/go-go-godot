@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dibfv1herxrjk"]
+
+[ext_resource type="Script" uid="uid://7uqephwgerm6" path="res://animatable_body_3d.gd" id="1_pxrju"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1b32k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a3o4k"]
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" unique_id=743315693]
+script = ExtResource("1_pxrju")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=967701214]
+mesh = SubResource("BoxMesh_1b32k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=848421486]
+shape = SubResource("BoxShape3D_a3o4k")
+debug_color = Color(0.9055163, 0.00013361097, 0.74806315, 0.41960785)

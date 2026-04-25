@@ -48,8 +48,15 @@ func _physics_process(delta):
 		
 	if Input.is_action_pressed("move_left"):
 		direction.x -= 1
+		
+	if Input.is_action_pressed("move_forward"):
+		direction.z -= 1  # Forward is negative!
+		
+	if Input.is_action_pressed("move_back"):
+		direction.z += 1
 
 	velocity.x = direction.x * speed
+	velocity.z = direction.z * speed
 	
 	if not is_on_floor():
 		velocity.y -= fall_acceleration * delta

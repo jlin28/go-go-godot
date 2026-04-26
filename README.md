@@ -9,6 +9,7 @@
 2. [INTRO](#intro)
 3. [HOW DO I GET STARTED](#how-do-i-get-started-)
 4. [HOW TO EMBED INTO FLASK](#how-to-embed-into-flask)
+5. [IMPORTING BLENDER MODELS](#importing-blender-models)
 <br>
 
 ### AVAILABLE RENDERERS
@@ -107,4 +108,17 @@ Remember, right clicks are your best friend.
   6) Set the export path to the `/static/godot/` folder and name the file `index.html` to match our iframe.
   6) Run Flask! If everything worked, the Godot game should appear embedded in the Flask page.
   7) **Note**: Current version is a test, export again when more finalized!
+
+### IMPORTING BLENDER MODELS
+---
+
+  1) Create your model in blender first!
+  2) Click file, as you would when saving it, and go to export
+  3) Export your file as a .glb file to your godot project folder
+  6) Open your godot project!!!
+  7) Click on your blender file which should be in your filesystem now and click the __import__ tab
+  8) Import as 'Scene' and go to Advanced Import Settings 
+  9) You can mess around there with configs （theres a lot of stuff..) and then click reimport!!!!!!!
+  10) Based on what the model is, import it either in your main scene by using __instantiate child scene__ or in your character scene!
+  11) Now you have a silly little blender thing character (whatever you imported)
 

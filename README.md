@@ -94,7 +94,7 @@ Remember, right clicks are your best friend.
      ```
      <iframe
          src="/static/godot/index.html"
-         style="width: 100vw; height: 100vh;">
+         style="width: 100vw; height: 100vh; border: none;">
      </iframe>
      ```
      An `iframe` is an HTML element that allows other interactive content to be embedded in a webpage. In this case, our Flask page is displaying the exported Godot web page inside the `/play` page.
@@ -117,8 +117,7 @@ Remember, right clicks are your best friend.
   3) Export your file as a .glb file to your godot project folder
   6) Open your godot project!!!
   7) Click on your blender file which should be in your filesystem now and click the __import__ tab
-  8) Import as 'Scene' and go to Advanced Import Settings 
+  8) Import as 'Scene' and go to Advanced Import Settings
   9) You can mess around there with configs （theres a lot of stuff..) and then click reimport!!!!!!!
   10) Based on what the model is, import it either in your main scene by using __instantiate child scene__ or in your character scene!
   11) Now you have a silly little blender thing character (whatever you imported)
-

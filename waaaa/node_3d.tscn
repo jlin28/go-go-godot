@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cyxa1hxxqetgx" path="res://character_body_3d.tscn" id="1_a202f"]
 [ext_resource type="Script" uid="uid://wyooigoj6535" path="res://node_3d.gd" id="1_noarx"]
+[ext_resource type="Script" uid="uid://cu4xd5sx47clr" path="res://client.gd" id="3_a0tk4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4xowi"]
 size = Vector3(2.3895264, 1, 1)
@@ -107,3 +108,6 @@ mesh = SubResource("BoxMesh_r3fl7")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2025344051]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9971926, 2.3091254, 8.82594)
 fov = 53.437496
+
+[node name="MultiplayerClient" type="Node" parent="." unique_id=643200322]
+script = ExtResource("3_a0tk4")

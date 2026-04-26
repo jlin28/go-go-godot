@@ -109,6 +109,8 @@ Remember, right clicks are your best friend.
   6) Run Flask! If everything worked, the Godot game should appear embedded in the Flask page.
   7) **Note**: Current version is a test, export again when more finalized!
 
+<br>
+
 ### IMPORTING BLENDER MODELS
 ---
 

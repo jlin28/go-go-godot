@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://baptqj7jh74kf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hg5er"]
+
+[node name="RemotePlayer" type="Node3D" unique_id=2142351588]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1976585092]
+mesh = SubResource("BoxMesh_hg5er")

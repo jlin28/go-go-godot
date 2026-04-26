@@ -1,4 +1,5 @@
 extends Node
+@export var remote_player_scene: PackedScene # stores remote_player.tscn
 
 #
 #void clientLogic(int server_socket){
@@ -33,6 +34,9 @@ var server_url := "ws://127.0.0.1:8080"
 
 var socket := WebSocketPeer.new()
 var connected = false
+
+var my_id = null
+var remote_players = {}
 
 #/*Connect to the server
  #*return the to_server socket descriptor
@@ -70,17 +74,18 @@ var connected = false
 # Run 1x when entering scene, start server connection!
 func _ready():
 	var error = socket.connect_to_url(server_url)
-
+	
 	if error != OK:
 		print("Could not connect to WebSocket server")
 	else:
 		print("Trying to connect to WebSocket server...")
 
+		
 # Run every frame, update connection
 func _process(delta):
 	socket.poll() # Godot requires this for the socket to update
-	var state = socket.get_ready_state()
 	
+	var state = socket.get_ready_state()
 	if state == WebSocketPeer.STATE_OPEN: 
 		if not connected:
 			connected = true
@@ -90,8 +95,50 @@ func _process(delta):
 		while socket.get_available_packet_count() > 0: # other waiting messages
 			var packet = socket.get_packet().get_string_from_utf8() # converts packet bytes for the one read packet to readable text
 			print("From server: ", packet)
+			
+			var msg = JSON.parse_string(packet) # convert json from node into godot dict
+			if msg == null:
+				print("json parse couldn't")
+				continue
+			
+			handle_server_msg(msg)
 	
 	elif state == WebSocketPeer.STATE_CLOSED:
 		if connected:
 			print("Disconnected!")
 			connected = false
+			
+func handle_server_msg(msg):
+	var msg_type = msg.get("type")
+	
+	if msg_type == "assign_id":
+		my_id = msg.get("id")
+		print("my id is: ", my_id)
+	elif msg_type == "player_joined":
+		var player_id = msg.get("id")
+		spawn_remote_player(player_id)
+	elif msg_type == "player_left":
+		var player_id = msg.get("id")
+		remove_remote_player(player_id)
+		
+func spawn_remote_player(player_id):
+	if player_id == my_id:
+		return
+	if remote_players.has(player_id):
+		return
+	
+	var remote_copy = remote_player_scene.instantiate()
+	remote_copy.position = Vector3(2 * player_id, 1, 0)
+	
+	remote_players[player_id] = remote_copy
+	
+	# I have no idea what this means but I couldn't get it to spawn and searched it up and now my brain is too fried!
+	get_tree().current_scene.call_deferred("add_child", remote_copy)
+	
+func remove_remote_player(player_id):
+	if remote_players.has(player_id):
+		var remote_player = remote_players[player_id]
+		remote_player.queue_free()
+		remote_players.erase(player_id)
+		print("Removed remote player ", player_id)
+	

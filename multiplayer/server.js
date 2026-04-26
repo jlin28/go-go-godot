@@ -97,15 +97,39 @@ let nextPlayerId = 1;
 //   }
 // }
 
+const players = new Map();
+
 wss.on("connection", (socket) => {
   const playerId = nextPlayerId++;
+
+  players.set(socket, {
+  id: playerId
+  });
+
   console.log(`Player ${playerId} connected`);
 
   // writing to client socket
   socket.send(JSON.stringify({
+    type: "assign_id",
     test: "HELP!!!",
     id: playerId
   }));
+
+  // check existing players
+  for (const [otherS, otherP] of players) {
+    if (otherS !== socket) {
+      socket.send(JSON.stringify({
+        type: "player_joined",
+        id: otherP.id
+      }));
+    }
+  }
+
+  // new player joined (spawn remote player for new player)
+  broadcast({
+    type: "player_joined",
+    id: playerId
+  }, socket);
 
   // reading/listening for msg
   socket.on("message", (data) => {
@@ -121,7 +145,25 @@ wss.on("connection", (socket) => {
   // disconnection
   socket.on("close", () => {
     console.log(`Player ${playerId} disconnected`);
+
+    players.delete(socket);
+    // remove remote player
+    broadcast({
+      type: "player_left",
+      id: playerId
+    });
   });
 });
+
+// sends msg to all connected clients!
+function broadcast(message, exceptSocket = null) {
+  const text = JSON.stringify(message);
+
+  for (const client of wss.clients) {
+    if (client !== exceptSocket && client.readyState === WebSocket.OPEN) { // exceptSocket to skip the player who joined
+      client.send(text);
+    }
+  }
+}
 
 console.log(`Work!??? ws://127.0.0.1:${PORT}`);

@@ -30,7 +30,7 @@ extends Node
 #}
 
 # test
-var server_url := "ws://127.0.0.1:8080"
+var server_url := "ws://167.71.189.221/ws"
 
 var socket := WebSocketPeer.new()
 var connected = false

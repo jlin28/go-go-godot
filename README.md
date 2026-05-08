@@ -11,7 +11,7 @@
 1. [AVAILABLE RENDERERS](#available-renderers)
 2. [INTRO](#intro)
 3. [HOW DO I GET STARTED](#how-do-i-get-started-)
-4. [HOW TO EMBED INTO FLASK](#how-to-embed-into-flask)
+4. [HOW TO EMBED INTO HTML](#how-to-embed-into-html)
 5. [IMPORTING BLENDER MODELS](#importing-blender-models)
 <br>
 
@@ -89,7 +89,7 @@ Remember, right clicks are your best friend.
 
 <br>
 
-### HOW TO EMBED INTO FLASK
+### HOW TO EMBED INTO HTML
 ---
 
   1) In the `static` folder, create a subfolder. Let's name it `godot`! This is the location where the Godot web export will go.
@@ -109,7 +109,7 @@ Remember, right clicks are your best friend.
      - Click `Add...` and select `Web`
      - Click `Export Project`
   6) Set the export path to the `/static/godot/` folder and name the file `index.html` to match our iframe.
-  6) Run Flask! If everything worked, the Godot game should appear embedded in the Flask page.
+  6) Run Flask/Node! If everything worked, the Godot game should appear embedded in the page.
   7) **Note**: Current version is a test, export again when more finalized!
 
 <br>
